@@ -1,10 +1,6 @@
 import React from 'react';
-import { BotMessageSquare } from "lucide-react";
-import { BatteryCharging } from "lucide-react";
-import { Fingerprint } from "lucide-react";
-import { ShieldHalf } from "lucide-react";
-import { PlugZap } from "lucide-react";
-import { GlobeLock } from "lucide-react";
+import { motion } from 'framer-motion';
+import { Shield, Fingerprint, Code, MonitorPlay, Users, BarChart3 } from 'lucide-react';
 
 // const features = [
 //     {
@@ -45,86 +41,130 @@ import { GlobeLock } from "lucide-react";
 // ];
 
 const features = [
-    {
-      icon: <BotMessageSquare />,
-      text: "Drag-and-Drop Interface",
-      description:
-        "Easily design and arrange your VR environments with a user-friendly drag-and-drop interface.",
-    },
-    {
-      icon: <Fingerprint />,
-      text: "Multi-Platform Compatibility",
-      description:
-        "Build ML models that run seamlessly across multiple platforms, including mobile, desktop.",
-    },
-    {
-      icon: <ShieldHalf />,
-      text: "No-code editors",
-      description:
-        "Jumpstart your ML projects with a variety of built-in templates for different types of applications and environments.",
-    },
-    {
-      icon: <BatteryCharging />,
-      text: "Real-Time Preview",
-      description:
-        "Preview your ML application in real-time as you make changes, allowing for quick iterations and adjustments.",
-    },
-    {
-      icon: <PlugZap />,
-      text: "Collaboration Tools",
-      description:
-        "Work together with your team in real-time on ML models, enabling seamless collaboration and idea sharing.",
-    },
-    {
-      icon: <GlobeLock />,
-      text: "Analytics Dashboard",
-      description:
-        "Gain valuable insights into user interactions and behavior within your VR applications with an integrated analytics dashboard.",
-    },
-  ];
+  {
+    icon: <Code className="w-8 h-8 text-primary" />,
+    title: "Drag-and-Drop Interface",
+    description: "Easily design and arrange your VR environments with a user-friendly drag-and-drop interface."
+  },
+  {
+    icon: <Fingerprint className="w-8 h-8 text-primary" />,
+    title: "Multi-Platform Compatibility",
+    description: "Build ML models that run seamlessly across multiple platforms, including mobile, desktop."
+  },
+  {
+    icon: <Shield className="w-8 h-8 text-primary" />,
+    title: "No-code editors",
+    description: "Jumpstart your ML projects with a variety of built-in templates for different types of applications and environments."
+  },
+  {
+    icon: <MonitorPlay className="w-8 h-8 text-primary" />,
+    title: "Real-Time Preview",
+    description: "Preview your ML application in real-time as you make changes, allowing for quick iterations and adjustments."
+  },
+  {
+    icon: <Users className="w-8 h-8 text-primary" />,
+    title: "Collaboration Tools",
+    description: "Work together with your team in real-time on ML models, enabling seamless collaboration and idea sharing."
+  },
+  {
+    icon: <BarChart3 className="w-8 h-8 text-primary" />,
+    title: "Analytics Dashboard",
+    description: "Gain valuable insights into user interactions and behavior within your VR applications with an integrated analytics dashboard."
+  }
+];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { 
+      staggerChildren: 0.1,
+      delayChildren: 0.3
+    }
+  }
+};
 
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { 
+    y: 0, 
+    opacity: 1,
+    transition: { duration: 0.5 }
+  }
+};
+
+const FeatureCard = ({ icon, title, description, index }) => {
+  return (
+    <motion.div 
+      className="bg-dark rounded-xl overflow-hidden shadow-md transition-all duration-300 h-full"
+      variants={itemVariants}
+      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+    >
+      <div className="p-6 flex flex-col items-center text-center">
+        <div className="bg-dark/80 rounded-full p-4 mb-4 flex items-center justify-center">
+          {icon}
+        </div>
+        <h3 className="text-xl font-semibold mb-3 text-white">{title}</h3>
+        <p className="text-gray-400 text-sm">{description}</p>
+      </div>
+    </motion.div>
+  );
+};
 
 const FeaturesSection = () => {
-    return (
-        <div className="flex flex-col items-center justify-center h-auto py-20 text-white">
-            {/* <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-6 md:mb-10">Features</h2> */}
-            {/* <h2 className="text-3xl sm:text-5xl lg:text-6xl mt-1 lg:mt-2 tracking-wide">Features</h2> */}
-            <span className="relative px-5  bg-zinc-800 border border-zinc-700 text-md shadow-2xl overflow-hidden mt-20 text-orange-500 rounded-full h-max text-20px font-medium py-auto uppercase">
-          Feature
-        </span>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl mt-1 lg:mt-2 tracking-wide">
-            Why should try AO | Learn
-        </h2>
-
-
-<div className="flex flex-wrap mx-[100px] mt-10 lg:mt-10">
-  {features.map((feature, index) => (
-    <div 
-      key={index} 
-      className="w-full sm:w-1/2 lg:w-1/3 p-4"
-    >
-      
-      <div className="flex flex-col   shadow-lg rounded-lg p-6 shimmer-border bg-gradient-to-b from-zinc-800 to-black transition duration-300">
-        <div className="flex items-center justify-center h-12 w-12 p-2 bg-neutral-900 text-orange-700 rounded-full mx-auto mb-4">
-          {feature.icon}
-        </div>
-        <h5 className="text-center text-xl  mb-2">
-          {feature.text}
-        </h5>
-        <p className="text-center text-md text-neutral-500">
-          {feature.description}
-        </p>
+  return (
+    <section className="py-20 relative overflow-hidden">
+      {/* Animated Grid Background */}
+      <div className="absolute inset-0">
+        <div className="grid-background"></div>
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-r from-light/50 to-light/50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
       </div>
-    </div>
-  ))}
-</div>
-
-
+      
+      <div className="container mx-auto px-4 max-w-6xl relative z-10">
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-block bg-dark px-4 py-1.5 rounded-full mb-4"
+          >
+            <span className="text-sm font-medium text-primary uppercase">Feature</span>
+          </motion.div>
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold mb-6 text-dark"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Why should try AO | <span className="text-primary">Learn</span>
+          </motion.h2>
         </div>
 
-
-    );
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {features.map((feature, index) => (
+            <FeatureCard 
+              key={index}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+              index={index}
+            />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
 };
 
 export default FeaturesSection;
