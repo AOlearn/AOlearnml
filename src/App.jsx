@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import HeroSection from './sections/HeroSection/HeroSection';
 import ClientReviewSection from './sections/ClientReviewSection/ClientReviewSection';
 import FAQSection from './sections/FAQSection/FAQSection';
-import Navbar from './components/Navbar/Navbar';
+// import Navbar from './components/Navbar/Navbar';
 import FeaturesSection from './sections/FeaturesSection/FeaturesSection';
 import PricingSection from './sections/PricingSection/PricingSection';
 import Footer from './components/Footer/Footer';
-import Cta from './sections/Cta/Cta';
+// import Cta from './sections/Cta/Cta';
 
 function App() {
   // Add light theme class to body
@@ -23,9 +23,9 @@ function App() {
       {/* Grid Background - already added in the HeroSection component */}
       
       <div className="flex-grow">
-        <div className="container mx-auto px-4">
+        {/* <div className="container mx-auto px-4">
           <Navbar />
-        </div>
+        </div> */}
         
         <main>
           <HeroSection />
@@ -34,7 +34,7 @@ function App() {
           <PricingSection />
           <ClientReviewSection />
           <FAQSection />
-          <Cta />
+          {/* <Cta /> */}
           {/* <ContactSection /> */}
         </main>
       </div>

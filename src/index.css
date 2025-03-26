@@ -16,11 +16,11 @@
 }
 
 :root {
-    --primary: #FF8E3C;
-    --primary-light: #FFBD59;
-    --secondary: #0080FF;
-    --dark: #2C2C2C;
-    --light: #F5F7FA;
+    --primary: #3B82F6;
+    --primary-light: #60A5FA;
+    --secondary: #1E40AF;
+    --dark: #1F2937;
+    --light: #F9FAFB;
     --border: #E2E8F0;
 }
 
@@ -76,7 +76,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 142, 60, 0.1), transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1), transparent 70%);
     animation: pulse 8s infinite alternate;
 }
 
@@ -98,17 +98,17 @@ body {
 }
 
 .box-shadow:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.1), 0 10px 10px rgba(59, 130, 246, 0.05);
     transform: translateY(-5px);
 }
 
 /* Button styles */
 .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-primary to-primary-light text-white rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
 }
 
 .btn-secondary {
-    @apply px-6 py-3 border border-primary text-primary rounded-lg font-medium transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg hover:-translate-y-1;
+    @apply px-6 py-3 border border-blue-500 text-blue-600 rounded-lg font-medium transition-all duration-300 hover:bg-blue-500 hover:text-white hover:shadow-lg hover:-translate-y-1;
 }
 
 /* Card styles */
@@ -144,4 +144,13 @@ body {
 
 .animate-fadeIn {
     animation: fadeIn 0.8s ease forwards;
+}
+
+/* Glowing blob background element */
+.blue-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    z-index: -1;
+    background-color: rgba(59, 130, 246, 0.2);
 }

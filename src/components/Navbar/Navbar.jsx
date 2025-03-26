@@ -17,21 +17,28 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-5 z-50 py-3 px-4 bg-white border border-border w-full max-w-5xl mx-auto rounded-lg shadow-md animate-fadeIn">
-      <div className="container mx-auto">
-        <div className="flex justify-between items-center">
+    <nav className="sticky top-5 z-50 bg-white border border-blue-200 w-full max-w-5xl mx-auto shadow-md animate-fadeIn">
+      {/* Top accent bar */}
+      <div className="h-1 w-full bg-gradient-to-r from-blue-400 to-blue-600"></div>
+      
+      <div className="container mx-auto px-0">
+        <div className="flex justify-between items-center py-3 px-6">
           <div className="flex items-center">
-            <img className="h-[30px] w-auto mr-3" src={logo} alt="Logo" />
-            <span className="text-xl font-semibold text-dark">AO | Learn</span>
+            <div className="bg-blue-50 p-2 mr-3 border-r-2 border-b-2 border-blue-200">
+              <img className="h-[26px] w-auto" src={logo} alt="Logo" />
+            </div>
+            <span className="text-xl font-semibold text-dark border-b-2 border-blue-100 pb-1">
+              AO | <span className="text-blue-600">Learn</span>
+            </span>
           </div>
           
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex space-x-8">
+          <ul className="hidden md:flex">
             {navItems.map((item, index) => (
-              <li key={index}>
+              <li key={index} className="group">
                 <a 
                   href={item.href} 
-                  className="text-dark hover:text-primary transition-colors duration-300"
+                  className="block px-4 py-2 text-dark hover:text-blue-600 border-b-2 border-transparent hover:border-blue-500 transition-colors duration-300"
                 >
                   {item.label}
                 </a>
@@ -40,44 +47,47 @@ const Navbar = () => {
           </ul>
           
           {/* Action Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button className="text-primary hover:text-primary-light transition-colors duration-300">
+          <div className="hidden md:flex items-center">
+            <button className="px-4 py-2 text-blue-600 hover:text-blue-800 border-l border-blue-100 transition-colors duration-300">
               Sign In
             </button>
-            <button className="btn-primary">
+            <button className="ml-2 px-6 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-300">
               Get Started
             </button>
           </div>
           
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-dark p-2 rounded-md hover:bg-gray-100"
+            className="md:hidden text-dark p-2"
             onClick={toggleNavbar}
           >
-            {mobileDrawerOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileDrawerOpen ? 
+              <X size={24} className="text-blue-600" /> : 
+              <Menu size={24} className="text-blue-600" />
+            }
           </button>
         </div>
         
         {/* Mobile Menu */}
         {mobileDrawerOpen && (
-          <div className="md:hidden mt-4 pb-4 animate-moveUp">
-            <ul className="flex flex-col space-y-4">
+          <div className="md:hidden animate-moveUp border-t border-blue-100">
+            <ul className="flex flex-col">
               {navItems.map((item, index) => (
-                <li key={index}>
+                <li key={index} className="border-b border-blue-50">
                   <a 
                     href={item.href} 
-                    className="block py-2 text-dark hover:text-primary transition-colors duration-300"
+                    className="block py-3 px-6 text-dark hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300"
                   >
                     {item.label}
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="mt-6 flex flex-col space-y-3">
-              <button className="w-full py-2 text-primary hover:text-primary-light transition-colors duration-300">
+            <div className="grid grid-cols-2 gap-2 p-4 bg-blue-50 border-t border-blue-100">
+              <button className="py-2 text-blue-600 hover:text-blue-800 bg-white border border-blue-200 transition-colors duration-300">
                 Sign In
               </button>
-              <button className="btn-primary w-full">
+              <button className="py-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-300">
                 Get Started
               </button>
             </div>
