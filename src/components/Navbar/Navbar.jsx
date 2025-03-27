@@ -3,8 +3,8 @@ import { useState } from "react";
 import logo from './Vector.png'
 
 const navItems = [
-    { label: "Learn", href: "#" },
-    { label: "Community", href: "#" },
+    { label: "Learn", href: "https://docs.aolearn.tech" },
+    { label: "Community", href: "https://docs.aolearn.tech" },
     { label: "Ecosystem", href: "#" },
     { label: "API", href: "#" },
 ];
